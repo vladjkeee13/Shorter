@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+        <div class="conteiner-fluid">
+            <div class="navbar-header">
+                <a href="{% url 'core:home-page' %}" class="navbar-brand"> Python URL Shortener </a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if not request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'registration' %}"> Registration </a>
+                        </li>
+                    {% endif %}
+
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <li>
+                                 <a href="{% url 'admin-panel' %}"> Admin Panel </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'logout' %}"> Logout </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'my-account' %}"> Signed in as <b> {{ request.user }} </b> </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}"> Login </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>

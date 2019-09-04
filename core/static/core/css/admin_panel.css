@@ -1,0 +1,102 @@
+div.row {
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    width: 1140px !important;
+    margin-left: 0;
+    height: 87px;
+}
+
+div.bt {
+    vertical-align: 0 !important;
+    width: 200px;
+    margin: 0;
+}
+
+div.paginator{
+    text-align: center;
+    border-top: 1px solid #dddddd;
+}
+
+input.url_input {
+    width: 400px;
+}
+
+input.short_url_input {
+    width: 250px;
+}
+
+input.bt {
+    font-size: 17px;
+}
+
+h5 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table {
+    table-layout: fixed;
+    margin-top: 30px;
+    margin-bottom: 5px !important;
+    border-bottom: 1px solid #ddd;
+}
+
+.table thead>tr>th {
+    vertical-align: middle;
+    border-bottom: 0 solid #ddd;
+}
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td, .table tbody>tr>td, .table tfoot>tr>td {
+    vertical-align: middle;
+}
+
+tr.f_row {
+    border-top: 1px solid #dddddd;
+    height: 40px;
+    font-size: 15px;
+}
+
+th.first_column {
+    width: 300px;
+}
+
+th.second_column {
+    width: 200px;
+}
+
+th.third_column {
+    width: 95px;
+}
+
+th.fourth_column {
+    width: 250px;
+}
+
+th.fifth_column {
+    width: 200px;
+}
+
+th.sixth_column {
+    width: 95px;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+ul {
+    color: red;
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+a.url {
+    text-decoration: none;
+}

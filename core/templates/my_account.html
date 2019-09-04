@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block include_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/my_account.css' %}">
+{% endblock include_css %}
+
+
+{% block title %}
+    My Account
+{% endblock title %}
+
+
+{% block content %}
+
+    <table border="1px black" style="margin-left: 500px">
+        <tr>
+            <th colspan="2" style="text-align: center"> {{ user.username }}</th>
+        </tr>
+        <tr>
+            {% if user.avatar %}
+                <td colspan="2" style="text-align: center"> <img class="img" src="/media/{{ user.avatar }}" alt="Img3"> </td>
+            {% else %}
+                <td colspan="2">  You haven't selected a photo yet </td>
+            {% endif %}
+        </tr>
+        <tr style="margin-left: 50px">
+            <th> First_name: </th>
+            <th> Last name: </th>
+        </tr>
+        <tr>
+            <td> {{ user.first_name }} </td>
+            <td> {{ user.last_name }} </td>
+        </tr>
+        <tr>
+            <th colspan="2"> Personal information: </th>
+        </tr>
+        <tr>
+            {% if user.personal_information %}
+                <td colspan="2" rowspan="3"> {{ user.personal_information }} </td>
+            {% else %}
+                <td colspan="2"> You haven't provide personal information.. </td>
+            {% endif %}
+        </tr>
+    </table>
+
+{% endblock content %}

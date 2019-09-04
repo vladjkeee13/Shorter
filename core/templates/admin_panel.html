@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block include_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/admin_panel.css' %}">
+{% endblock include_css %}
+
+
+{% block title %}
+    PUS (Admin Panel)
+{% endblock title %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row form">
+            <div class="col-md-10 col-md-offset-1">
+                <form class="form-inline" role="form" method="post"> {% csrf_token %}
+                    <div class="form-group">
+                        <label for="url" class="control-label"></label>
+                        <input type="text" class="form-control input-lg url_input" name="url" id="url" placeholder="Your URL">
+                    </div>
+                    <div class="form-group">
+                        <label for="short_url" class="control-label"></label>
+                        <input type="text" class="form-control input-lg short_url_input" name="short_url" id="short_url" placeholder="Your short URL (optional)">
+                    </div>
+                    <div class="form-group bt">
+                        <label for="button" class="control-label"></label>
+                        <input type="submit" class="form-control input-lg btn btn-primary bt" id="button" value="Create short URL">
+                    </div>
+                    {% if form.url.errors %}
+                        {{ form.url.errors }}
+                    {% elif form.short_url.errors %}
+                        {{ form.short_url.errors }}
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        {% if urls %}
+
+            <table class="table">
+
+                <thead>
+                    <tr class="active f_row">
+                        <th class="first_column">  URL       </th>
+                        <th class="second_column"> Text      </th>
+                        <th class="third_column">  Clicks    </th>
+                        <th class="fourth_column"> Short URL </th>
+                        <th class="fifth_column">  Created   </th>
+                        <th class="sixth_column">  Action    </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for url in urls %}
+                        <tr>
+                            <td> <h5> <a class="url" href={% url 'core:crud-url' pk=url.id %}> {{ url.url }} </a> </h5> </td>
+                            <td> <h5> {{ url.text }} </h5> </td>
+                            <td> {{ url.clicks }} </td>
+                            <td> <a class="url" href={% url 'core:crud-url' pk=url.id %}> 127.0.0.1:8000/{{ url.short_url }} </a> </td>
+                            <td> {{ url.created_date|date:'D, d. M Y H:i A'  }} </td>
+                            <td> <a href="{% url 'core:delete-url' pk=url.pk %}"> <span style="margin-left: 15px" class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+            <div class="paginator">
+
+                {% if page.has_other_pages %}
+                    <ul class="pagination">
+                        {% if page.has_previous %}
+                            <li><a href="?page={{ page.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in page.paginator.page_range %}
+                            {% if page.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page.has_next %}
+                            <li><a href="?page={{ page.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock content %}

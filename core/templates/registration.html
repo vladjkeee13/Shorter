@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block include_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/registration.css' %}">
+{% endblock include_css %}
+
+
+{% block title %}
+    Registration
+{% endblock title %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                    <h3 class="modal-title text-center"> Registration </h3>
+                </div>
+
+                <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="modal-body">
+
+                        {% if form.username.errors %}
+                            {{ form.username.errors }}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" required="" name="username" id="username" value="">
+                        </div>
+                            {% if form.password.errors %}
+                                {{ form.password.errors }}
+                            {% endif %}
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" required="" name="password" id="password" value="">
+                                    <span class="help-block">Choose a password for your new account.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password_check">Repeat Password</label>
+                                    <input type="password" class="form-control" required="" name="password_check" id="password_check" value="">
+                                    <span class="help-block">Type the password again. Passwords must match.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if form.email.errors %}
+                            {{ form.email.errors }}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" required="" id="email" name="email" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name">Firs Name</label>
+                            <input type="text" class="form-control" required="" id="first_name" name="first_name" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" required="" id="last_name" name="last_name" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_of_birth">Date of Birth</label>
+                            <input type="date" class="form-control" required="" id="date_of_birth" name="date_of_birth" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_personal_information">Personal Information</label>
+                            <textarea cols="40" rows="10" class="form-control" required="" id="id_personal_information" name="personal_information"> </textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="id_avatar">Avatar</label>
+                            <input type="file" class="input-file" id="id_avatar" accept="image/*" name="avatar">
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="hidden" name="isEmpty" value="">
+                        <button type="input" name="submit" value="newAccount" class="btn btn-success btn-icon"><i class="fa fa-check"></i> Create My Account</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

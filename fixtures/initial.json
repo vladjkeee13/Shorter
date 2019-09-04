@@ -1,0 +1,96 @@
+[
+{
+    "model": "core.myuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$WKo7W188qLao$kDJQw4Yb23bAttocawo3C2j2j2sQy73PYD8yiQT9NiM=",
+        "last_login": "2019-09-01T22:14:05.905Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-09-01T18:23:30.660Z",
+        "avatar": "",
+        "date_of_birth": null,
+        "personal_information": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.myuser",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$150000$KwThIhXgYcAb$g8DeizQr9acrn+9LoFKMDW6CnTaj8lIWxqO/wONa9bk=",
+        "last_login": "2019-09-01T18:25:04.389Z",
+        "is_superuser": false,
+        "username": "vladjkeee13",
+        "first_name": "Vlad",
+        "last_name": "Ulyanich",
+        "email": "vladjkeee13@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-09-01T18:25:03.565Z",
+        "avatar": "avatars/user_wPIz5DV.png",
+        "date_of_birth": "1997-08-13",
+        "personal_information": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.url",
+    "pk": 1,
+    "fields": {
+        "author": 2,
+        "url": "https://www.google.com/search?q=python&oq=python&aqs=chrome.0.69i59l2j69i60j69i59j0l2.3809j0j7&sourceid=chrome&ie=UTF-8",
+        "text": "G",
+        "clicks": 0,
+        "short_url": "ssmlc3ab",
+        "created_date": "2019-09-01T18:28:08.782Z",
+        "expiration_date": "2019-09-15T18:28:08.782Z"
+    }
+},
+{
+    "model": "core.url",
+    "pk": 2,
+    "fields": {
+        "author": 2,
+        "url": "https://www.heroeswm.ru/",
+        "text": "\u0421\u0435\u0439\u0447\u0430\u0441\u2122\ufe0f \u0432 \u0438\u0433\u0440\u0435 4,430 \u0438\u0433\u0440\u043e\u043a\u043e\u0432.\u2122\ufe0f",
+        "clicks": 0,
+        "short_url": "itwv0njw",
+        "created_date": "2019-09-01T18:28:15.637Z",
+        "expiration_date": "2019-09-15T18:28:15.637Z"
+    }
+},
+{
+    "model": "core.url",
+    "pk": 3,
+    "fields": {
+        "author": 1,
+        "url": "https://www.youtube.com/watch?v=c8VqcY14j8U",
+        "text": "UA",
+        "clicks": 0,
+        "short_url": "ljt7hggj",
+        "created_date": "2019-09-01T18:28:28.943Z",
+        "expiration_date": "2019-09-15T18:28:28.943Z"
+    }
+},
+{
+    "model": "core.url",
+    "pk": 4,
+    "fields": {
+        "author": 1,
+        "url": "https://shafa.ua/my/clothes",
+        "text": "\u0412\u0445\u043e\u0434 | \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f\u2122\ufe0f",
+        "clicks": 0,
+        "short_url": "c6hflgxo",
+        "created_date": "2019-09-01T18:28:43.510Z",
+        "expiration_date": "2019-09-15T18:28:43.510Z"
+    }
+}
+]

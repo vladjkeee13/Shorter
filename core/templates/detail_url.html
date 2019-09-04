@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block include_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/detail_url.css' %}">
+{% endblock include_css %}
+
+
+{% block title %}
+    Detail URL
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+        {% for error in form.errors %}
+            {{ error }}
+        {% endfor %}
+                <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="form-group">
+                            <h3 class="url"> {{ url.url }} </h3>
+                            <input type="hidden" class="form-control input-lg short_url" required="" id="url" name="url" value="{{ url.url }}">
+                        </div>
+
+                        <label for="short_url"> Short URL </label>
+                        <div class="input-group">
+                            <span class="input-group-addon text-primary" style="height: 45px">http://127.0.0.1:8000/</span>
+                            <input type="text" class="form-control input-lg short_url" required="" id="short_url" name="short_url" value="{{ url.short_url }}">
+                        </div>
+
+                        <div class="form-group" style="margin-top: 20px">
+                            <label for="message"> Message </label>
+                            <textarea cols="40" rows="10" class="form-control message_input" id="message" name="text"> {{ url.text }} </textarea>
+                        </div>
+                        {% if form.created_date.errors %}
+                            {{ form.created_date.errors }}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="created_date"> Created </label>
+                                    <input type="text" class="form-control input-lg" required id="created_date" name="created_date" value="{{ url.created_date|date:'D, d. M Y H:i A' }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="clicks"> Clicks </label>
+                                    <input type="text" class="form-control input-lg" required id="clicks" name="clicks" value="{{ url.clicks }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row buttons">
+                            <div class="col-md-2">
+                                <div>
+                                    <button type="submit" name="submit" value="Save" class="btn btn-primary btn-icon btn-save"><i class="fa fa-check"></i> Save </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="cancel-block">
+                                    <a href="{% url 'admin-panel' %}" class="btn btn-default btn-icon a-cancel"> Cancel </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="delete-block">
+                                    <button type="submit" name="submit" value="Delete" class="btn btn-danger btn-icon btn-delete"><i class="fa fa-check"></i> Delete </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+        </div>
+
+    </div>
+
+{% endblock content %}

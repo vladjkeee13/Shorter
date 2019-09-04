@@ -1,0 +1,52 @@
+version: '3.4'
+
+x-db-config : &db-config
+  DB_HOST: "db"
+  POSTGRES_DB: "managing_urls"
+  POSTGRES_USER: "urls_user"
+  POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ".:/managing_urls"
+    depends_on:
+      - db
+      - redis
+    environment:
+      <<: *db-config
+  db:
+    image: postgres:9.6
+    volumes:
+      - "db-volume:/var/lib/postgresql/data"
+    environment:
+      <<: *db-config
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+  celery:
+    build: .
+    command: bash -c "celery -A ManagingURLs worker -l info"
+    volumes:
+      - ".:/managing_urls"
+    depends_on:
+      - db
+      - redis
+    environment:
+      <<: *db-config
+  celery-beat:
+    build: .
+    command: bash -c "celery -A ManagingURLs beat -l info"
+    volumes:
+      - ".:/managing_urls"
+    depends_on:
+      - db
+      - redis
+volumes:
+  db-volume:
